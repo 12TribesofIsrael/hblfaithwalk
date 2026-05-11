@@ -13,6 +13,7 @@ param(
 )
 
 $repos = @(
+    '.',
     'AIconsultantforHmblzayy',
     'faithwalklivecom',
     'aibiblegospelscom',
@@ -24,13 +25,14 @@ $root = $PSScriptRoot
 $summary = @()
 
 foreach ($repo in $repos) {
-    $path = Join-Path $root $repo
+    $path = if ($repo -eq '.') { $root } else { Join-Path $root $repo }
+    $label = if ($repo -eq '.') { 'hblfaithwalk (umbrella)' } else { $repo }
     Write-Host ""
-    Write-Host "=== $repo ===" -ForegroundColor Cyan
+    Write-Host "=== $label ===" -ForegroundColor Cyan
 
     if (-not (Test-Path (Join-Path $path '.git'))) {
         Write-Host "  (skipped - no .git directory)" -ForegroundColor Yellow
-        $summary += [pscustomobject]@{ Repo = $repo; Result = 'skipped (no .git)' }
+        $summary += [pscustomobject]@{ Repo = $label; Result = 'skipped (no .git)' }
         continue
     }
 
@@ -38,14 +40,14 @@ foreach ($repo in $repos) {
         git -C $path fetch --quiet 2>&1 | Out-Null
         $branchInfo = git -C $path status -sb | Select-Object -First 1
         Write-Host "  $branchInfo"
-        $summary += [pscustomobject]@{ Repo = $repo; Result = $branchInfo }
+        $summary += [pscustomobject]@{ Repo = $label; Result = $branchInfo }
     } else {
         $output = git -C $path pull --rebase --autostash 2>&1
         $output | ForEach-Object { Write-Host "  $_" }
         $result = if ($LASTEXITCODE -eq 0) {
             if ($output -match 'Already up to date') { 'up-to-date' } else { 'updated' }
         } else { 'FAILED' }
-        $summary += [pscustomobject]@{ Repo = $repo; Result = $result }
+        $summary += [pscustomobject]@{ Repo = $label; Result = $result }
     }
 }
 
