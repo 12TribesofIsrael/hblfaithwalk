@@ -1,0 +1,38 @@
+{
+  "folders": [
+    {
+      "name": "AIconsultantforHmblzayy (HMBL consulting)",
+      "path": "AIconsultantforHmblzayy"
+    },
+    {
+      "name": "faithwalklivecom (Faith Walk Live site)",
+      "path": "faithwalklivecom"
+    },
+    {
+      "name": "aibiblegospelscom (AI Bible Gospels parent brand)",
+      "path": "aibiblegospelscom"
+    },
+    {
+      "name": "faithwalkbook (private book)",
+      "path": "faithwalkbook"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.next": true,
+      "**/node_modules": true,
+      "**/.vercel": true,
+      "**/*.tsbuildinfo": true
+    },
+    "search.exclude": {
+      "**/.next": true,
+      "**/node_modules": true,
+      "**/package-lock.json": true,
+      "**/.vercel": true
+    },
+    "typescript.tsdk": "faithwalklivecom/node_modules/typescript/lib"
+  },
+  "extensions": {
+    "recommendations": []
+  }
+}
