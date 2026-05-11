@@ -4,6 +4,8 @@ This directory is a **multi-repo VS Code workspace**, not itself a git repo. It'
 
 Opened via [hblfaithwalk.code-workspace](hblfaithwalk.code-workspace).
 
+> **Brand-wide repo view lives in [`../ecosystem`](../ecosystem).** This workspace covers Faith Walk + the parent-brand site + book + memory-backup. The second flagship — **Anointed** at [anointed.app](https://anointed.app) — has no repo here; its code is at `C:\Users\Claude\ai-bible-gospels`. For unified ahead/behind/dirty status across every AI Bible Gospels repo on both machines, run `scripts\repo-sync.cmd` from the ecosystem repo.
+
 ## Brand hierarchy
 
 - **AI Bible Gospels** — parent faith-tech brand. Live at [aibiblegospels.com](https://aibiblegospels.com) (Vercel, in production since ~Apr 22, 2026). YouTube channel + parent site.
