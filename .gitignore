@@ -14,6 +14,7 @@ Thumbs.db
 
 # Transient or large files — re-evaluate per file if you want one tracked
 v1.png
+analytics-pull.json
 
 # Temp HTML / scratch
 _*.html
